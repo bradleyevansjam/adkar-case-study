@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Managing Change: The ADKAR Framework | Case Study</title>
+<meta name="description" content="Instructional design case study: a 90-minute blended learning module that teaches people managers to diagnose and support change with Prosci's ADKAR model.">
+<meta property="og:title" content="Managing Change: The ADKAR Framework">
+<meta property="og:description" content="A blended learning module for people managers, from storyboard to scenario.">
+<meta property="og:image" content="images/hero-laptop.webp">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="images/logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#080c28; --navy-2:#141a3f; --lime:#c0d814; --blue:#0098f0; --paper:#f3f3f6;
+  --ink:#0d1024; --muted:#5a5f75; --line:#dfe1ea; --white:#fff;
+  --radius:14px; --wrap:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--blue)}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+@media (max-width:600px){.wrap{padding:0 16px}}
+h1,h2,h3,h4{line-height:1.15;margin:0;letter-spacing:-.02em}
+h2{font-size:clamp(28px,4vw,40px);font-weight:800}
+h3{font-size:20px;font-weight:700}
+p{margin:0 0 1em}
+.eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.dark .eyebrow{color:var(--lime)}
+section{padding:88px 0}
+@media (max-width:700px){section{padding:60px 0}}
+.dark{background:var(--navy);color:#e8eaf4}
+.dark h2,.dark h3{color:#fff}
+.lead{font-size:clamp(18px,2vw,21px);color:var(--muted);max-width:760px}
+.dark .lead{color:#b9bdd3}
+.section-head{margin-bottom:44px}
+.section-head h2{margin-bottom:14px}
+
+/* top bar */
+.topbar{position:sticky;top:0;z-index:20;background:rgba(8,12,40,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:700;font-size:15px}
+.brand img{width:34px;height:34px;border-radius:8px}
+.topnav{display:flex;gap:22px}
+.topnav a{color:#c9cce0;text-decoration:none;font-size:14px;font-weight:500}
+.topnav a:hover{color:#fff}
+@media (max-width:820px){.topnav{display:none}}
+
+/* hero */
+.hero{position:relative;background:var(--navy);color:#fff;overflow:hidden;padding:0}
+.hero-bg{position:absolute;inset:0;background:url(images/hero-laptop.webp) center/cover no-repeat;opacity:.28}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 30%,rgba(8,12,40,.55) 100%)}
+.hero .wrap{position:relative;z-index:1;padding-top:110px;padding-bottom:100px}
+.hero h1{font-size:clamp(38px,6vw,68px);font-weight:800;max-width:820px}
+.hero h1 span{color:var(--lime)}
+.hero .sub{font-size:clamp(18px,2.2vw,23px);color:#c9cce0;max-width:680px;margin:22px 0 40px}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.12);border-radius:var(--radius);overflow:hidden;max-width:960px}
+.facts div{background:rgba(8,12,40,.85);padding:18px 20px}
+.facts dt{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);font-weight:700;margin-bottom:6px}
+.facts dd{margin:0;font-size:15px;color:#fff;font-weight:500}
+@media (max-width:800px){.facts{grid-template-columns:1fr 1fr}}
+@media (max-width:420px){.facts{grid-template-columns:1fr}}
+
+/* overview */
+.overview{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
+@media (max-width:900px){.overview{grid-template-columns:1fr;gap:36px}}
+.overview h3{margin:28px 0 8px}
+.overview h3:first-child{margin-top:0}
+.objective{background:var(--navy);color:#fff;border-radius:var(--radius);padding:32px;position:relative}
+.objective .tag{display:inline-block;background:var(--lime);color:var(--navy);font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:5px 12px;margin-bottom:16px}
+.objective p{font-size:19px;line-height:1.5;margin:0;font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:5px 12px;font-size:13px;color:#d8dbec}
+
+/* rationale */
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media (max-width:980px){.grid-4{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.grid-4{grid-template-columns:1fr}}
+.card{background:#fff;border-radius:var(--radius);border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column}
+.card-head{background:var(--navy);color:#fff;padding:18px 22px;display:flex;align-items:center;gap:12px}
+.card-head .num{width:30px;height:30px;border-radius:8px;background:var(--lime);color:var(--navy);display:grid;place-items:center;font-weight:800;font-size:14px;flex:none}
+.card-head h3{font-size:18px;color:#fff}
+.card-body{padding:20px 22px 24px;color:#30344b;font-size:16px}
+.card-body p:last-child{margin:0}
+.addie{margin-top:40px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+.addie-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.addie-top p{margin:0;color:var(--muted);max-width:620px;font-size:16px}
+.phases{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+@media (max-width:700px){.phases{grid-template-columns:1fr}}
+.phase{border-radius:10px;padding:14px 16px;background:var(--paper);border:1px solid var(--line)}
+.phase b{display:block;font-size:15px;margin-bottom:4px}
+.phase span{font-size:14px;color:var(--muted);line-height:1.45;display:block}
+.phase.now{background:var(--lime);border-color:var(--lime)}
+.phase.now span{color:#2b3000}
+
+/* journey */
+.journey{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:stretch}
+.arrow{display:grid;place-items:center;color:var(--lime);font-size:28px}
+@media (max-width:900px){.journey{grid-template-columns:1fr}.arrow{transform:rotate(90deg);height:30px}}
+.stop{background:var(--navy-2);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);overflow:hidden}
+.stop-head{padding:16px 22px;font-weight:700;font-size:17px}
+.stop:nth-child(1) .stop-head{background:var(--lime);color:var(--navy)}
+.stop:nth-child(3) .stop-head{background:var(--blue);color:#fff}
+.stop:nth-child(5) .stop-head{background:#fff;color:var(--navy)}
+.stop-body{padding:20px 22px 24px}
+.stop-body .focus{font-size:20px;font-weight:700;color:#fff;margin-bottom:12px}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.meta span{font-size:13px;background:rgba(255,255,255,.08);border-radius:6px;padding:4px 10px;color:#d8dbec}
+.stop ul{margin:0;padding-left:18px;color:#c9cce0;font-size:15px}
+.stop li{margin:4px 0}
+
+/* adkar explorer */
+.explorer{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.tabs{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--line)}
+@media (max-width:700px){.tabs{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.tab{appearance:none;border:0;background:#fff;padding:18px 8px 16px;cursor:pointer;font:inherit;text-align:center;border-bottom:4px solid transparent;color:var(--muted);transition:background .15s}
+.tab:hover{background:var(--paper)}
+.tab .letter{display:block;font-size:30px;font-weight:800;line-height:1;color:var(--ink);margin-bottom:6px}
+.tab .name{font-size:14px;font-weight:600}
+@media (max-width:560px){.tab .name{font-size:11px}.tab .letter{font-size:24px}}
+.tab[aria-selected="true"]{border-bottom-color:var(--blue);background:#f4faff;color:var(--ink)}
+.tab[aria-selected="true"] .letter{color:var(--blue)}
+.tab:focus-visible{outline:3px solid var(--blue);outline-offset:-3px}
+.panel{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0}
+.panel[hidden]{display:none}
+@media (max-width:860px){.panel{grid-template-columns:1fr}}
+.panel > div{padding:28px}
+.panel > div + div{border-left:1px solid var(--line)}
+@media (max-width:860px){.panel > div + div{border-left:0;border-top:1px solid var(--line)}}
+.panel h4{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.panel .def{font-size:20px;font-weight:600;line-height:1.4}
+.panel ul{margin:0;padding-left:18px}
+.panel li{margin:6px 0}
+.panel .notes{background:#fafbfd;font-size:16px;color:#30344b}
+.bloom{display:inline-block;margin-top:16px;font-size:13px;font-weight:600;background:var(--navy);color:#fff;border-radius:999px;padding:4px 12px}
+
+/* sessions */
+.session{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
+@media (max-width:900px){.session{grid-template-columns:1fr;gap:28px}}
+.session-badges{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 22px}
+.badge{font-size:13px;font-weight:600;border-radius:999px;padding:5px 12px;background:#fff;border:1px solid var(--line)}
+.badge.lime{background:var(--lime);border-color:var(--lime);color:var(--navy)}
+.badge.blue{background:var(--blue);border-color:var(--blue);color:#fff}
+.activities{display:grid;gap:16px}
+.activity{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;display:grid;grid-template-columns:44px 1fr;gap:16px}
+.activity .ic{width:44px;height:44px;border-radius:10px;background:var(--blue);color:#fff;display:grid;place-items:center}
+.activity h3{font-size:18px;margin-bottom:6px}
+.activity p{margin:0;font-size:15.5px;color:#30344b}
+.activity ul{margin:8px 0 0;padding-left:18px;font-size:15px;color:#30344b}
+
+.agenda{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;font-size:15px}
+.agenda th{background:var(--navy);color:#fff;text-align:left;padding:14px 16px;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.agenda td{padding:14px 16px;border-top:1px solid var(--line);vertical-align:top}
+.agenda td:first-child{font-weight:800;color:var(--blue);white-space:nowrap}
+.agenda td.act{font-weight:600}
+.agenda .bl{font-size:13px;font-weight:600;background:var(--paper);border-radius:6px;padding:3px 8px;white-space:nowrap}
+.table-scroll{overflow-x:auto;border-radius:var(--radius)}
+@media (max-width:700px){.agenda{min-width:640px}}
+
+/* scenario */
+.scenario{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--navy-2);border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,.1)}
+@media (max-width:900px){.scenario{grid-template-columns:1fr}}
+.scenario figure{margin:0;position:relative;min-height:320px}
+.scenario figure img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:opacity .4s}
+.scenario figure img.alt{opacity:0}
+.scenario.resolved figure img.alt{opacity:1}
+.scenario figcaption{position:absolute;left:16px;bottom:16px;background:rgba(8,12,40,.8);color:#fff;font-size:13px;padding:6px 10px;border-radius:6px}
+.scn-text{padding:32px}
+.scn-text p{color:#d3d6e8}
+.scn-text .q{font-size:22px;font-weight:700;color:#fff;margin:22px 0 14px}
+.options{display:grid;gap:10px}
+.opt{appearance:none;text-align:left;font:inherit;cursor:pointer;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:14px 16px;color:#fff;display:grid;grid-template-columns:32px 1fr;gap:12px;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--lime)}
+.opt:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
+.opt .k{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.12);display:grid;place-items:center;font-weight:800}
+.opt b{display:block;font-size:16px}
+.opt small{display:block;color:#b9bdd3;font-size:14px;line-height:1.45;margin-top:3px}
+.opt[aria-pressed="true"]{background:rgba(192,216,20,.12);border-color:var(--lime)}
+.opt[aria-pressed="true"] .k{background:var(--lime);color:var(--navy)}
+.feedback{margin-top:16px;border-radius:12px;padding:18px 20px;font-size:15.5px;display:none}
+.feedback.show{display:block}
+.feedback.good{background:var(--lime);color:var(--navy)}
+.feedback.warn{background:#fff;color:var(--ink)}
+.feedback strong{display:block;margin-bottom:4px}
+.feedback p{margin:0;color:inherit}
+
+/* job aid */
+.jobaid{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.ja-head{background:var(--navy);color:#fff;padding:20px 28px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.ja-head h3{color:#fff;font-size:22px}
+.ja-head span{font-size:13px;color:var(--lime);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.ja-row{display:grid;grid-template-columns:180px 1fr 1fr;border-top:1px solid var(--line)}
+.ja-row.th{background:var(--paper);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--muted);border-top:0}
+.ja-row > div{padding:16px 22px;font-size:15.5px}
+.ja-row > div:first-child{font-weight:700;display:flex;align-items:center;gap:10px}
+.ja-row > div:first-child i{font-style:normal;width:28px;height:28px;border-radius:7px;background:var(--navy);color:var(--lime);display:grid;place-items:center;font-size:13px;font-weight:800;flex:none}
+.ja-row > div + div{border-left:1px solid var(--line)}
+@media (max-width:760px){
+  .ja-row{grid-template-columns:1fr}
+  .ja-row.th{display:none}
+  .ja-row > div + div{border-left:0;padding-top:0}
+  .ja-row > div:nth-child(2)::before{content:"Signs they're stuck";display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:4px}
+  .ja-row > div:nth-child(3)::before{content:"What you can do";display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:4px}
+}
+
+/* reflection */
+.reflect{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:900px){.reflect{grid-template-columns:1fr}}
+.rq{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.rq-head{background:var(--navy);color:#fff;padding:14px 22px;font-weight:800;font-size:22px}
+.rq-body{padding:22px}
+.rq-body > p{font-weight:600;font-size:16.5px}
+.mc{display:grid;gap:8px}
+.mc button{appearance:none;font:inherit;text-align:left;cursor:pointer;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:11px 14px;font-size:14.5px;color:var(--ink);line-height:1.4}
+.mc button:hover{border-color:var(--blue)}
+.mc button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.mc button.right{background:var(--lime);border-color:var(--lime);font-weight:600}
+.mc button.wrong{background:#fdecec;border-color:#f3b8b8}
+.mc-note{font-size:14px;color:var(--muted);margin-top:10px;min-height:1.4em}
+.lines{display:grid;gap:22px;margin-top:18px}
+.lines span{border-bottom:1px solid var(--line);height:1px}
+
+/* outcomes */
+.outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:860px){.outcomes{grid-template-columns:1fr}}
+.outcome{border-top:3px solid var(--lime);padding-top:18px}
+.outcome h3{color:#fff;margin-bottom:8px}
+.outcome p{color:#b9bdd3;font-size:16px;margin:0}
+
+/* about */
+.about{display:grid;grid-template-columns:260px 1fr;gap:44px;align-items:center}
+@media (max-width:760px){.about{grid-template-columns:1fr;gap:24px}}
+.about .photo{background:var(--navy);border-radius:var(--radius);overflow:hidden;aspect-ratio:3/4;max-width:260px}
+.about .photo img{width:100%;height:100%;object-fit:cover;object-position:top}
+.about h2{margin-bottom:10px}
+.about p{color:#30344b}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;text-decoration:none;font-weight:600;border-radius:999px;padding:12px 22px;margin:6px 8px 0 0;font-size:15px}
+.btn.ghost{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}
+.btn:hover{opacity:.9}
+footer{background:var(--navy);color:#8d92ad;font-size:14px;padding:28px 0}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="images/logo.webp" alt="">BeClear Communication</a>
+    <nav class="topnav" aria-label="Sections">
+      <a href="#overview">Overview</a>
+      <a href="#approach">Approach</a>
+      <a href="#journey">Journey</a>
+      <a href="#scenario">Scenario</a>
+      <a href="#job-aid">Job aid</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="eyebrow">Instructional Design Case Study</span>
+    <h1>Managing Change: <span>The ADKAR Framework</span></h1>
+    <p class="sub">A blended learning module that teaches people managers to diagnose where each team member is in a change, and how to help them move forward.</p>
+    <dl class="facts">
+      <div><dt>Audience</dt><dd>People managers leading change</dd></div>
+      <div><dt>Duration</dt><dd>90 minutes across 3 sessions</dd></div>
+      <div><dt>Format</dt><dd>Async pre-work, live session, follow-up</dd></div>
+      <div><dt>Approach</dt><dd>ADDIE, Bloom's taxonomy, Rise 360</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section id="overview">
+  <div class="wrap overview">
+    <div>
+      <span class="eyebrow">Overview</span>
+      <h3>Purpose</h3>
+      <p>This module gives learners a working understanding of Prosci's ADKAR model and why it matters. It shows how change succeeds or stalls one person at a time, and why that should shape how managers plan, communicate and support change.</p>
+      <h3>Who it's for</h3>
+      <p>A mixed audience: employees going through change, and the managers and change leads guiding others through it. The content moves between the personal experience of change and the practical steps for leading it, so neither group sits through material meant only for the other.</p>
+      <h3>How it's delivered</h3>
+      <p>A hybrid design: online pre-work and follow-up around a facilitated in-person session. The digital parts are designed for Rise 360, with short readings, interactive knowledge checks and scenario-based reflection.</p>
+    </div>
+    <div class="objective">
+      <span class="tag">Module objective</span>
+      <p>By the end of this module, managers will be able to diagnose where team members are on the ADKAR change journey and apply targeted support strategies to help them progress.</p>
+      <div class="chips">
+        <span class="chip">Awareness</span><span class="chip">Desire</span><span class="chip">Knowledge</span><span class="chip">Ability</span><span class="chip">Reinforcement</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH / RATIONALE -->
+<section id="approach" style="background:#fff">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Design rationale</span>
+      <h2>Why it's built this way</h2>
+      <p class="lead">Each design choice ties back to what managers need to do on the job: not just name the five stages, but spot them in real people and act.</p>
+    </div>
+    <div class="grid-4">
+      <article class="card">
+        <div class="card-head"><span class="num">1</span><h3>Blended learning</h3></div>
+        <div class="card-body"><p>ADKAR's Ability stage needs learners to practise making decisions. Async content alone can't build the skills managers need, so the core practice happens live.</p></div>
+      </article>
+      <article class="card">
+        <div class="card-head"><span class="num">2</span><h3>Pre-work</h3></div>
+        <div class="card-body"><p>Activating prior knowledge before the live session gives learners time to connect the model to their own experience. They arrive primed and knowing what to expect, not cold.</p></div>
+      </article>
+      <article class="card">
+        <div class="card-head"><span class="num">3</span><h3>Branching scenario</h3></div>
+        <div class="card-body"><p>Managers have to judge where an individual sits on the model, not just recall the stages. The scenario builds applied judgement at Bloom's <em>Analyse</em> level.</p></div>
+      </article>
+      <article class="card">
+        <div class="card-head"><span class="num">4</span><h3>Job aid</h3></div>
+        <div class="card-body"><p>A practical reference card carries the learning beyond the session and supports spaced application in the flow of work.</p></div>
+      </article>
+    </div>
+
+    <div class="addie">
+      <div class="addie-top">
+        <h3>Built with ADDIE</h3>
+        <p>This piece is the Design phase output: the storyboard that drives development of the eLearning and facilitator guide.</p>
+      </div>
+      <div class="phases">
+        <div class="phase"><b>Analysis</b><span>Shaped the manager-focused scenario</span></div>
+        <div class="phase now"><b>Design</b><span>Produced this storyboard</span></div>
+        <div class="phase"><b>Development</b><span>eLearning build and facilitator guide</span></div>
+        <div class="phase"><b>Implementation</b><span>Async and in-person delivery</span></div>
+        <div class="phase"><b>Evaluation</b><span>Observation and spaced pulse checks</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey" class="dark">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">The learning journey</span>
+      <h2>How learners move through the module</h2>
+      <p class="lead">Three sessions map onto the ADKAR stages, so learners experience the model's sequence as they learn it.</p>
+    </div>
+    <div class="journey">
+      <div class="stop">
+        <div class="stop-head">Session 1 · Pre-session</div>
+        <div class="stop-body">
+          <div class="focus">“Awareness and Desire”</div>
+          <div class="meta"><span>Asynchronous</span><span>20 minutes</span></div>
+          <ul><li>Scenario video</li><li>Reading</li><li>Reflection</li></ul>
+        </div>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="stop">
+        <div class="stop-head">Session 2 · Live session</div>
+        <div class="stop-body">
+          <div class="focus">“Knowledge and Ability”</div>
+          <div class="meta"><span>In person</span><span>60 minutes</span></div>
+          <ul><li>Facilitated discussion</li><li>Scenario practice</li></ul>
+        </div>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="stop">
+        <div class="stop-head">Session 3 · Post-session</div>
+        <div class="stop-body">
+          <div class="focus">“Reinforcement”</div>
+          <div class="meta"><span>In person / async</span><span>Ongoing</span></div>
+          <ul><li>Facilitated discussion</li><li>Scenario practice</li><li>Manager reference card</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADKAR EXPLORER -->
+<section id="adkar">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Content design</span>
+      <h2>The five stages, through a manager's eyes</h2>
+      <p class="lead">Each stage in the storyboard pairs a plain definition with what it means for managers and a facilitator prompt. Select a stage to explore it.</p>
+    </div>
+
+    <div class="explorer">
+      <div class="tabs" role="tablist" aria-label="ADKAR stages">
+        <button class="tab" role="tab" id="t-a" aria-controls="p-a" aria-selected="true"><span class="letter">A</span><span class="name">Awareness</span></button>
+        <button class="tab" role="tab" id="t-d" aria-controls="p-d" aria-selected="false" tabindex="-1"><span class="letter">D</span><span class="name">Desire</span></button>
+        <button class="tab" role="tab" id="t-k" aria-controls="p-k" aria-selected="false" tabindex="-1"><span class="letter">K</span><span class="name">Knowledge</span></button>
+        <button class="tab" role="tab" id="t-ab" aria-controls="p-ab" aria-selected="false" tabindex="-1"><span class="letter">A</span><span class="name">Ability</span></button>
+        <button class="tab" role="tab" id="t-r" aria-controls="p-r" aria-selected="false" tabindex="-1"><span class="letter">R</span><span class="name">Reinforcement</span></button>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-a" aria-labelledby="t-a">
+        <div><h4>What it is</h4><p class="def">People understand that change is needed.</p><span class="bloom">Remember · Understand</span></div>
+        <div><h4>For managers, this means</h4><ul><li>Understanding the case for change</li><li>Recognising the impact on the team</li><li>Connecting the change to company strategy</li><li>Understanding their own role</li></ul></div>
+        <div class="notes"><h4>Facilitator interaction</h4><p>Live turn-and-share: “How is change communicated in your business today?”</p><p style="margin:0">Tug of War, agree or disagree: “Change is always necessary.” “All staff must be included in the process.” “Change is the responsibility of managers only.”</p></div>
+      </div>
+      <div class="panel" role="tabpanel" id="p-d" aria-labelledby="t-d" hidden>
+        <div><h4>What it is</h4><p class="def">People commit to supporting the change. They must want it to happen, not just understand it.</p><span class="bloom">Remember · Understand</span></div>
+        <div><h4>For managers, this means</h4><ul><li>Model commitment yourself</li><li>Be honest about challenges but confident about success</li><li>Answer team questions openly</li><li>Acknowledge concerns without dismissing them</li></ul></div>
+        <div class="notes"><h4>Facilitator prompt</h4><p>“Think of a change you resisted, even though you understood why it was happening. What changed your mind?” Wait, and listen.</p><p style="margin:0">Desire is personal. A manager's job isn't to convince people the change is good; it's to be honest about what it costs and confident it's worth it.</p></div>
+      </div>
+      <div class="panel" role="tabpanel" id="p-k" aria-labelledby="t-k" hidden>
+        <div><h4>What it is</h4><p class="def">The skills and information people need to carry out the change successfully.</p><span class="bloom">Understand</span></div>
+        <div><h4>For managers, this means</h4><ul><li>Assess your team's current skills</li><li>Identify who needs which training</li><li>Make sure everyone can access learning</li><li>Allow practice time without penalty</li></ul></div>
+        <div class="notes"><h4>Key points to hit</h4><p>Not everyone needs the same thing, so training should be matched to the person.</p><p style="margin:0">Knowledge without practice is just information. It doesn't stick.</p></div>
+      </div>
+      <div class="panel" role="tabpanel" id="p-ab" aria-labelledby="t-ab" hidden>
+        <div><h4>What it is</h4><p class="def">People can actually perform the change. Knowledge without the ability to act creates frustration.</p><span class="bloom">Apply · Analyse</span></div>
+        <div><h4>For managers, this means</h4><ul><li>Be patient with early mistakes</li><li>Provide hands-on coaching</li></ul></div>
+        <div class="notes"><h4>Facilitator notes</h4><p style="margin:0">Don't expect perfection on day one. Celebrate when people get it right, even small wins.</p></div>
+      </div>
+      <div class="panel" role="tabpanel" id="p-r" aria-labelledby="t-r" hidden>
+        <div><h4>What it is</h4><p class="def">Keeping people aligned with the change after rollout. Without it, people revert to old behaviours.</p><span class="bloom">Evaluate · Synthesise</span></div>
+        <div><h4>For managers, this means</h4><ul><li>Celebrate when people do it right</li><li>Keep reinforcing the “why” over time</li></ul></div>
+        <div class="notes"><h4>Facilitator notes</h4><p>Most training fails here: we celebrate completion, then disappear. Six weeks later, people are back to old ways.</p><p style="margin:0">Close with: “Ability and Reinforcement aren't the end of the change. They're when it becomes real, when it sticks.”</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SESSION 1 -->
+<section id="pre" style="background:#fff">
+  <div class="wrap session">
+    <div>
+      <span class="eyebrow">Session 1 · Pre-session</span>
+      <h2>Awareness &amp; Desire</h2>
+      <div class="session-badges"><span class="badge lime">Async</span><span class="badge">20 minutes</span><span class="badge">Remember · Understand · Analyse</span></div>
+      <p>Self-guided pre-work helps learners connect their own experience with the content and build a foundation in ADKAR before the in-person session.</p>
+      <p style="color:var(--muted);font-size:16px"><strong style="color:var(--ink)">Objective:</strong> managers will recall the five ADKAR stages and their sequence, understand how each stage shows up when team members resist change, and analyse a change in their own team to place a team member on the ADKAR journey. Measured by a quiz (at least 3 correct), a reflection naming a specific team change, and a self-assessed confidence check.</p>
+    </div>
+    <div class="activities">
+      <div class="activity">
+        <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+        <div><h3>Scenario video</h3><p>A manager watches a staff member resist a new process meant to improve performance. On-screen prompts follow:</p><ul><li>What do you see happening here?</li><li>Why do you think it's happening?</li><li>How would you approach this situation?</li></ul></div>
+      </div>
+      <div class="activity">
+        <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16v12H7l-3 3V4zm3 4v2h10V8H7zm0 4v2h7v-2H7z"/></svg></div>
+        <div><h3>Reflection board</h3><p>Learners post reflections to an online discussion board, guided by questions under the video, to connect with peers and share their thinking.</p></div>
+      </div>
+      <div class="activity">
+        <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3h14v18H5V3zm3 4v2h8V7H8zm0 4v2h8v-2H8zm0 4v2h5v-2H8z"/></svg></div>
+        <div><h3>Baseline survey</h3><p>Captures how learners currently feel about guiding change, including comfort with hard conversations and sensitive topics, plus one change they're leading now and its obstacles.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SESSION 2 -->
+<section id="live">
+  <div class="wrap">
+    <div class="session" style="margin-bottom:36px">
+      <div>
+        <span class="eyebrow">Session 2 · Live training</span>
+        <h2>Knowledge &amp; Ability</h2>
+        <div class="session-badges"><span class="badge blue">In person</span><span class="badge">60 minutes</span><span class="badge">Analyse</span></div>
+      </div>
+      <p class="lead" style="margin:0">By the end of this session, managers will diagnose the ADKAR stage of at least two team members in a structured scenario, distinguishing between stages (especially Desire vs. Ability). Assessed through facilitator observation of the group activity, peer feedback and reflection.</p>
+    </div>
+    <div class="table-scroll">
+      <table class="agenda">
+        <thead><tr><th>Time</th><th>ADKAR stage</th><th>Activity</th><th>Description</th><th>Bloom's level</th></tr></thead>
+        <tbody>
+          <tr><td>0:10</td><td>Desire</td><td class="act">Welcome + pre-work debrief</td><td>Share one observation from your reflection prompt</td><td><span class="bl">Remember</span></td></tr>
+          <tr><td>0:25</td><td>Knowledge</td><td class="act">ADKAR model walkthrough</td><td>Facilitator-led, visual model, real examples</td><td><span class="bl">Understand</span></td></tr>
+          <tr><td>0:45</td><td>Knowledge + Ability</td><td class="act">Small-group scenario</td><td>Where is this person on the ADKAR journey?</td><td><span class="bl">Analyse / Apply</span></td></tr>
+          <tr><td>0:55</td><td>Ability</td><td class="act">Paired application</td><td>Apply it to your own team situation</td><td><span class="bl">Apply / Evaluate</span></td></tr>
+          <tr><td>1:00</td><td>Reinforcement</td><td class="act">Debrief + job aid intro</td><td>Preview post-session resources</td><td><span class="bl">Evaluate / Synthesise</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SCENARIO -->
+<section id="scenario" class="dark">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Branching scenario · Try it</span>
+      <h2>Meet Maya</h2>
+      <p class="lead">The live session's centrepiece. Managers choose a response, then discuss what the outcome reveals about where Maya really is on the ADKAR journey.</p>
+    </div>
+    <div class="scenario" id="scn">
+      <figure>
+        <img src="images/maya-stressed.webp" alt="Maya at her desk, head in hand, looking overwhelmed" width="900" height="491">
+        <img class="alt" src="images/maya-relieved.webp" alt="Maya smiling at her desk with the new system open on her laptop" width="900" height="491">
+        <figcaption>Maya · Marketing, Justify Sciences</figcaption>
+      </figure>
+      <div class="scn-text">
+        <p>Maya has worked in marketing at Justify Sciences for over 10 years. Her manager recently introduced a new marketing tool, Hootsuite.</p>
+        <p>Maya knows technology is changing and the marketing landscape with it. But she enjoys working with the system she knows and trusts. It's worked fine until now, so why change it?</p>
+        <p class="q">What should you do?</p>
+        <div class="options">
+          <button class="opt" aria-pressed="false" data-k="a"><span class="k">A</span><span><b>Remind her of the policy</b><small>Stress that the policy is already approved and the new system goes live in 2 weeks.</small></span></button>
+          <button class="opt" aria-pressed="false" data-k="b"><span class="k">B</span><span><b>Ask Maya about her concerns</b><small>Identify her roadblocks and offer training, support and extra time if needed.</small></span></button>
+          <button class="opt" aria-pressed="false" data-k="c"><span class="k">C</span><span><b>Escalate to HR</b><small>Email HR that Maya isn't using the new system and ask them to follow up.</small></span></button>
+        </div>
+        <div class="feedback warn" id="fb-a" role="status"><strong>Maya complies, for now.</strong><p>Restating the policy treats this as an Awareness gap, but Maya already knows why the change is happening. The real barrier stays hidden, and she's likely to slip back to old habits.</p></div>
+        <div class="feedback good" id="fb-b" role="status"><strong>This revealed where Maya really is.</strong><p>Talking to Maya shows she's unsure how to start with the new system, worried newer colleagues will look more proactive, and overwhelmed by constant change. You reassure her that training, a coach and a mentor will be there. Maya isn't resistant; she's stuck at Desire. She wants to change but isn't sure how.</p></div>
+        <div class="feedback warn" id="fb-c" role="status"><strong>Trust takes a hit.</strong><p>Escalating skips the conversation that would diagnose the problem. Maya feels reported rather than supported, and her Desire for the change drops further.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOB AID -->
+<section id="job-aid" style="background:#fff">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Performance support</span>
+      <h2>The manager reference card</h2>
+      <p class="lead">A one-page job aid that turns the model into a diagnostic: spot the signs, name the stage, pick the action.</p>
+    </div>
+    <div class="jobaid">
+      <div class="ja-head"><h3>Manager Reference Card</h3><span>ADKAR quick diagnosis</span></div>
+      <div class="ja-row th"><div>Stage</div><div>Signs your team member is stuck</div><div>What you can do</div></div>
+      <div class="ja-row"><div><i>A</i>Awareness</div><div>They seem confused about why the change is happening. They ask, “Why are we doing this?”</div><div>Share the business case clearly. Connect the change to outcomes they care about.</div></div>
+      <div class="ja-row"><div><i>D</i>Desire</div><div>They understand the change but resist it. They say, “I get it, I just disagree.”</div><div>Explore personal concerns. Listen before explaining. Address what matters to them.</div></div>
+      <div class="ja-row"><div><i>K</i>Knowledge</div><div>They want to change but don't know how. They ask process questions repeatedly.</div><div>Provide training, clear guidance and worked examples. Set up job shadowing.</div></div>
+      <div class="ja-row"><div><i>A</i>Ability</div><div>They know what to do but struggle in practice. They revert under pressure.</div><div>Create low-stakes practice. Coach in the moment. Reduce barriers to application.</div></div>
+      <div class="ja-row"><div><i>R</i>Reinforcement</div><div>They've changed, but the behaviour is inconsistent. Old habits return over time.</div><div>Celebrate progress. Build in check-ins. Remove incentives for reverting.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REFLECTION -->
+<section id="reflection">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Closing reflection</span>
+      <h2>Before you go</h2>
+      <p class="lead">A short reflection to consolidate learning. Themes feed into the team check-in the following week, linking the session to Reinforcement.</p>
+    </div>
+    <div class="reflect">
+      <div class="rq"><div class="rq-head">Q1</div><div class="rq-body"><p>In your change initiative, which ADKAR stage is strongest right now, and which is weakest? Give a reason or evidence for your thinking.</p><div class="lines" aria-hidden="true"><span></span><span></span><span></span><span></span></div></div></div>
+      <div class="rq"><div class="rq-head">Q2</div><div class="rq-body"><p>Your team is resisting an upcoming system change. Using ADKAR, what should you do first?</p>
+        <div class="mc" id="mc">
+          <button data-ok="0">Start training immediately so people know how to use the new system</button>
+          <button data-ok="1">Clarify the business reason for the change and hold one-to-ones to understand concerns</button>
+          <button data-ok="0">Send a company-wide announcement about the change</button>
+        </div>
+        <p class="mc-note" id="mc-note" role="status"></p>
+      </div></div>
+      <div class="rq"><div class="rq-head">Q3</div><div class="rq-body"><p>What's one thing you'll do differently as a manager next week based on this learning?</p><div class="lines" aria-hidden="true"><span></span><span></span><span></span><span></span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EVALUATION -->
+<section class="dark">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Measuring impact</span>
+      <h2>How success is evaluated</h2>
+    </div>
+    <div class="outcomes">
+      <div class="outcome"><h3>Before</h3><p>Pre-work quiz (at least 3 correct), a reflection naming a real team change, and a baseline confidence survey.</p></div>
+      <div class="outcome"><h3>During</h3><p>Facilitator observation of the group scenario, plus peer feedback on each manager's stage diagnosis.</p></div>
+      <div class="outcome"><h3>After</h3><p>Reflection themes in the following week's team check-in, and spaced pulse checks to track whether new habits stick.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background:#fff">
+  <div class="wrap about">
+    <div class="photo"><img src="images/designer.webp" alt="Bradley Evans" width="520" height="694" loading="lazy"></div>
+    <div>
+      <span class="eyebrow">Designed by</span>
+      <h2>Bradley Evans</h2>
+      <p class="lead" style="margin-bottom:10px">Instructional designer and facilitator, BeClear Communication.</p>
+      <p>Role on this project: needs analysis, learning design, storyboarding in Figma, scenario writing and facilitation design.</p>
+      <a class="btn" href="mailto:brad@beclearcomm.net">brad@beclearcomm.net</a>
+      <a class="btn ghost" href="https://beclearcomm.net/about">beclearcomm.net/about</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer><div class="wrap"><span>© 2026 BeClear Communication</span><span>ADKAR® is a registered trademark of Prosci, Inc.</span></div></footer>
+
+<script>
+// ADKAR tabs
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('[role="tab"]'));
+  function select(t){
+    tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){select(t)});
+    t.addEventListener('keydown',function(e){
+      var n=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0; if(!n)return;
+      var nt=tabs[(i+n+tabs.length)%tabs.length]; select(nt); nt.focus(); e.preventDefault();
+    });
+  });
+})();
+// Maya scenario
+(function(){
+  var scn=document.getElementById('scn'), opts=[].slice.call(scn.querySelectorAll('.opt'));
+  opts.forEach(function(o){o.addEventListener('click',function(){
+    var k=o.dataset.k;
+    opts.forEach(function(x){x.setAttribute('aria-pressed',x===o)});
+    ['a','b','c'].forEach(function(id){document.getElementById('fb-'+id).classList.toggle('show',id===k)});
+    scn.classList.toggle('resolved',k==='b');
+  })});
+})();
+// Reflection quiz
+(function(){
+  var btns=[].slice.call(document.querySelectorAll('#mc button')), note=document.getElementById('mc-note');
+  btns.forEach(function(b){b.addEventListener('click',function(){
+    btns.forEach(function(x){x.classList.remove('right','wrong')});
+    var ok=b.dataset.ok==='1'; b.classList.add(ok?'right':'wrong');
+    note.textContent=ok?'Right. Start with Awareness and Desire: the why, and what worries people.':'Not quite. Training and announcements skip the why. Start with Awareness and Desire.';
+  })});
+})();
+</script>
+</body>
+</html>
